@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/warp.gd" type="Script" id=1]
+[ext_resource path="res://sprites/door.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.04104, 15.8563 )
+
+[node name="level_warp" type="Area2D"]
+script = ExtResource( 1 )
+warpPath = "ress://scenes/levels/forest/forest_1.tscn"
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2( -0.590305, -2.66304 )
+shape = SubResource( 1 )
+
+[node name="door" type="Sprite" parent="."]
+position = Vector2( -0.640812, -2.54111 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )

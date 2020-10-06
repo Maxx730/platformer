@@ -1,0 +1,349 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://spritesheets/character/sheet.png" type="Texture" id=1]
+[ext_resource path="res://spritesheets/collectables/Items_Coin.png" type="Texture" id=2]
+[ext_resource path="res://fonts/SpencersSpookyFontMONO.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/player.gd" type="Script" id=4]
+[ext_resource path="res://fonts/SpencersSpookyFont.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://spritesheets/character/emotes.png" type="Texture" id=7]
+[ext_resource path="res://particles/dot.png" type="Texture" id=8]
+[ext_resource path="res://spritesheets/ui/kb_dark_alphanumeric.png" type="Texture" id=9]
+
+[sub_resource type="CapsuleShape2D" id=34]
+radius = 6.31506
+height = 12.5045
+
+[sub_resource type="Animation" id=2]
+resource_name = "falling"
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 22, 22 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.00040625, 0.00129782, 0.0212974, 0.0446311, 0.0479642, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 20, 20, 20, 20, 20 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0692169, 0.142282, 0.227852, 0.301879, 0.385526, 0.465414 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 12, 13, 14, 15, 16, 17 ]
+}
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0.678431 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="DynamicFont" id=30]
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=40]
+
+[sub_resource type="DynamicFont" id=41]
+font_data = ExtResource( 6 )
+
+[sub_resource type="Curve" id=31]
+_data = [ Vector2( 0.02, 0.000893354 ), 0.0, 0.04914, 0, 0, Vector2( 0.923333, 0.991802 ), -0.0722207, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=32]
+resource_local_to_scene = true
+width = 100
+curve = SubResource( 31 )
+
+[sub_resource type="ParticlesMaterial" id=33]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+spread = 50.69
+gravity = Vector3( 0, -50, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 0.45
+damping_random = 0.7
+angle = 107.8
+angle_random = 0.3
+scale_curve = SubResource( 32 )
+color = Color( 1, 1, 1, 0.156863 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 9 )
+region = Rect2( 16, 352, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 9 )
+region = Rect2( 48, 352, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=39]
+animations = [ {
+"frames": [ SubResource( 36 ), SubResource( 38 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+script = ExtResource( 4 )
+
+[node name="sprite" type="Sprite" parent="."]
+z_index = 2
+texture = ExtResource( 1 )
+vframes = 10
+hframes = 10
+frame = 22
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2( -0.2108, 3.58357 )
+shape = SubResource( 34 )
+
+[node name="player" type="AnimationPlayer" parent="."]
+autoplay = "jump"
+anims/falling = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/run = SubResource( 5 )
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="box" type="Panel" parent="ui"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -58.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="message" type="Label" parent="ui/box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 5.0
+margin_right = -14.0
+margin_bottom = -6.0
+custom_fonts/font = SubResource( 7 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="status" type="Panel" parent="ui"]
+anchor_right = 1.0
+margin_bottom = 20.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="money" type="Panel" parent="ui/status"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -91.0
+margin_top = 2.0
+margin_bottom = 26.0
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="frame" type="HBoxContainer" parent="ui/status/money"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -64.0
+margin_right = -6.0
+margin_bottom = 13.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sprite" type="AnimatedSprite" parent="ui/status/money/frame"]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 18 )
+frame = 3
+playing = true
+centered = false
+offset = Vector2( 0, 7 )
+
+[node name="count" type="Label" parent="ui/status/money/frame"]
+margin_left = 10.0
+margin_right = 58.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 19 )
+text = "000000"
+align = 2
+
+[node name="health" type="Panel" parent="ui/status"]
+margin_right = 40.0
+margin_bottom = 15.0
+custom_styles/panel = SubResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="container" type="HBoxContainer" parent="ui/status/health"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -19.0
+margin_bottom = -3.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health" type="Label" parent="ui/status/health/container"]
+margin_right = 21.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 30 )
+text = "100"
+
+[node name="stats" type="Panel" parent="ui/status"]
+margin_top = 24.0
+margin_right = 92.0
+margin_bottom = 48.0
+custom_styles/panel = SubResource( 40 )
+
+[node name="FPS" type="Label" parent="ui/status/stats"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.30356
+margin_top = -4.7718
+margin_right = 3.30356
+margin_bottom = -4.7718
+custom_fonts/font = SubResource( 41 )
+text = "FPS :: "
+valign = 1
+
+[node name="emotes" type="Node2D" parent="."]
+visible = false
+
+[node name="sprite" type="Sprite" parent="emotes"]
+position = Vector2( 8, -18.2941 )
+texture = ExtResource( 7 )
+flip_h = true
+vframes = 13
+hframes = 12
+frame = 96
+
+[node name="play" type="AnimationPlayer" parent="emotes"]
+
+[node name="dust" type="Particles2D" parent="."]
+position = Vector2( -7, 15 )
+emitting = false
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 33 )
+texture = ExtResource( 8 )
+
+[node name="camera" type="Camera2D" parent="."]
+current = true
+
+[node name="input_actions" type="Node2D" parent="."]
+visible = false
+
+[node name="sprite" type="AnimatedSprite" parent="input_actions"]
+position = Vector2( 3, -22 )
+frames = SubResource( 39 )
+speed_scale = 0.5
+playing = true
