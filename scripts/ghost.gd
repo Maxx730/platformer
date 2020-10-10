@@ -8,17 +8,24 @@ export (float) var huntDistance = 100
 var floatingUp = false
 var startPos
 var player = null
+var hunting = false
 
 func _ready():
 	startPos = position.y
 	player = get_tree().get_nodes_in_group("player")[0]
+	
+func _draw():
+	if hunting:
+		draw_line(Vector2(0,0), -(global_position - player.global_position), Color(255, 0, 0), 1)
 
 func _process(delta):
 			
 	#determine if the ghost should start moving towards the player or not
 	if player && position.distance_to(player.position) > huntDistance:
 		position += _determine_move_dir(player) * delta
+		hunting = true
 	else:
+		hunting = false
 		#idle animation 
 		if floatingUp:
 			global_position.y -= floatAmount * delta
@@ -28,6 +35,8 @@ func _process(delta):
 			global_position.y += floatAmount * delta
 			if global_position.y >= startPos + floatAmount:
 				floatingUp = true
+	update()
+	
 
 func _determine_move_dir(player):
 	var moveDir = Vector2(0, 0)
