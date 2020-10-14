@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tilesets/forest.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/objects/torch.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/entities/ghost.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/entities/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/RuinedBrickFormation.png" type="Texture" id=5]
+[ext_resource path="res://scenes/entities/minataur.tscn" type="PackedScene" id=6]
 
 [node name="gameplay" type="Node2D"]
 
@@ -38,4 +39,7 @@ position = Vector2( 30.0139, 176.344 )
 [node name="RuinedBrickFormation" type="Sprite" parent="."]
 position = Vector2( 383.925, 160.577 )
 texture = ExtResource( 5 )
+
+[node name="minataur" parent="." instance=ExtResource( 6 )]
+position = Vector2( 199, 152 )
 
